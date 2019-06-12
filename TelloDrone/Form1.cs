@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,8 +23,6 @@ namespace TelloDrone
         {
             InitializeComponent();
 
-
-            //droneStream.StartPlay(new Uri("rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov"));
 
             Tello.onConnection += (Tello.ConnectionState newState) =>
             {
@@ -45,17 +44,15 @@ namespace TelloDrone
                 try
                 {
                     videoClient.Send(data.Skip(2).ToArray());//Skip 2 byte header and send to ffplay. 
-                    
+                    //droneStream.StartPlay(new Uri("udp://127.0.0.1:7038"));
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Error in Video Feed: " + ex.ToString());
+                    MessageBox.Show("Error in Video Feed: " + ex.ToString());
                 }
             };
 
             droneStream.StartPlay(new Uri("udp://127.0.0.1:7038"));
-            //var videoClient = UdpUser.ConnectTo("192.168.10.1", 11111);
-            //droneStream.StartPlay(new Uri("udp://192.168.10.1:11111"));
         }
 
 
@@ -65,44 +62,54 @@ namespace TelloDrone
             switch (keyData)
             {
 
-                case Keys.W:                   
+                case Keys.W:   // Forward                
                     axis[3] = sensitivity;         
                     break;
 
-                case Keys.A:                   
+                case Keys.A:   // Left             
                     axis[2] = -sensitivity;         
                     break;
 
-                case Keys.S:
+                case Keys.S:    // Bakcwards
                     axis[3] = -sensitivity;
                     break;
 
-                case Keys.D:
+                case Keys.D:    // Right
                     axis[2] = sensitivity;
                     break;
 
-                case Keys.Q:                    
+                case Keys.Right:    // Look Right             
                     axis[0] = sensitivity;                    
                     break;
 
-                case Keys.E:                    
+                case Keys.Left:     // Look Left               
                     axis[0] = -sensitivity;
                     break;
 
-                case Keys.Z:                    
+                case Keys.Up:     // Up               
                     axis[1] = sensitivity;                    
                     break;
 
-                case Keys.X:                    
+                case Keys.Down:  // Down            
                     axis[1] = -sensitivity;                    
                     break;
 
-                case Keys.D1:                    
+                case Keys.D1:       // Faster
                     if (sensitivity + 0.25f <= 1f)
                         sensitivity += 0.25f;
                     break;
 
-                case Keys.D2:
+                case Keys.Add:     // Faster               
+                    if (sensitivity + 0.25f <= 1f)
+                        sensitivity += 0.25f;
+                    break;
+
+                case Keys.D2:      // Slower
+                    if (sensitivity - 0.25f >= 0.0f)
+                        sensitivity -= 0.25f;
+                    break;
+
+                case Keys.Subtract: // Slower
                     if (sensitivity - 0.25f >= 0.0f)
                         sensitivity -= 0.25f;
                     break;
@@ -139,7 +146,10 @@ namespace TelloDrone
         private void takepic()
         {
             Bitmap img = droneStream.GetCurrentFrame();
-            img.Save(@"C:\Users\Mohamad K\Desktop\pic.png", ImageFormat.Png);
+            string picPath = "Images/";
+            System.IO.Directory.CreateDirectory(Path.Combine("../", picPath));
+            var picFilePath = Path.Combine("../", picPath + DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss") + ".jpeg");
+            img.Save(picFilePath, ImageFormat.Jpeg);
         }
 
 
