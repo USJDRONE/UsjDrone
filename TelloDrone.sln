@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelloDrone", "TelloDrone\TelloDrone.csproj", "{B9BAB24C-9DFF-44BD-8046-985AFF47A9B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelloLib", "TelloLib\TelloLib.csproj", "{FC69241F-8C76-45DE-A2D4-B2A5CD984014}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelloLogParser", "TelloLogParser\TelloLogParser.csproj", "{107DB5E3-F4F9-4C28-A16B-0DDEC8CCF801}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9BAB24C-9DFF-44BD-8046-985AFF47A9B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9BAB24C-9DFF-44BD-8046-985AFF47A9B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9BAB24C-9DFF-44BD-8046-985AFF47A9B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9BAB24C-9DFF-44BD-8046-985AFF47A9B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC69241F-8C76-45DE-A2D4-B2A5CD984014}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC69241F-8C76-45DE-A2D4-B2A5CD984014}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC69241F-8C76-45DE-A2D4-B2A5CD984014}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC69241F-8C76-45DE-A2D4-B2A5CD984014}.Release|Any CPU.Build.0 = Release|Any CPU
+		{107DB5E3-F4F9-4C28-A16B-0DDEC8CCF801}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{107DB5E3-F4F9-4C28-A16B-0DDEC8CCF801}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{107DB5E3-F4F9-4C28-A16B-0DDEC8CCF801}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{107DB5E3-F4F9-4C28-A16B-0DDEC8CCF801}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B90B83B9-A07B-4A3F-A99C-BD621B03C290}
+	EndGlobalSection
+EndGlobal
